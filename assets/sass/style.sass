@@ -1,0 +1,259 @@
+// color palette
+
+$coral: #fe5e31
+	
+// main block and tag's styles
+
+body
+	font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+	font-size: 16px
+	word-spacing: 1px
+	-ms-text-size-adjust: 100%
+	-webkit-text-size-adjust: 100%
+	-moz-osx-font-smoothing: grayscale
+	-webkit-font-smoothing: antialiased
+	box-sizing: border-box
+	padding: 0
+
+*, *:before, *:after
+	box-sizing: border-box
+	margin: 0
+a
+	appearance: none
+	text-decoration: none
+img
+	height: auto 
+	width: 100%
+
+header
+	height: 100vh
+	position: relative
+h3
+	text-transform: uppercase
+// *************
+
+
+// positions
+
+.position
+	&-XY-center
+		left: 50%
+		position: absolute
+		top: 50%
+		transform: translate3d(-50%, -50%, 0)
+	&-bottom-right
+		bottom: 0
+		position: absolute
+		right: 0
+	&-bottom-left
+		bottom: 0
+		left: 0
+		position: absolute
+	&-top-right
+		position: absolute
+		right: 0
+		top: 0
+	&-top-left
+		left: 0
+		position: absolute
+		top: 0
+
+// *************
+
+
+// buttons
+.btn
+	display: inline-block 
+	padding: 5px 15px
+.star_button
+	background: none
+	border-radius: 50%
+	height: 100px
+	overflow: hidden
+	width: 100px
+	a
+		background: $coral
+		color: #fff
+		display: block
+		font-size: 2.3rem
+		height: 100%
+		line-height: 100px
+		text-align: center
+		width: 100%
+
+// *************
+
+
+// visual stiles
+
+.shadow-black-lg
+	box-shadow: 0 30px 40px rgba(#000, .5)
+
+
+// *************
+
+
+// special styles
+
+.rounded-custom
+	border-radius: 10px
+
+.header_image
+	height: 600px
+	max-width: 600px
+	width: 100%
+	&_wrap
+		position: absolute
+		width: 100%
+		img
+			position: relative
+			transition: .3s ease-in-out
+.logo
+	height: 150px
+	padding: 20px
+	width: 150px
+// *************
+
+
+// animations
+
+.opacity-enter-active,
+.opacity-leave-active
+	transition: .2s ease-in-out
+
+.opacity-enter, 
+.opacity-leave-active
+	opacity: 0
+	.group_image
+		top: -30px
+
+.page-enter-active, .page-leave-active
+	transition: opacity .4s
+
+.page-enter, .page-leave-active
+	opacity: 0
+	height: 100vh
+	left: 0
+	position: absolute !important
+	top: 0
+	width: 100%
+	.bottom-left
+		img
+			opacity: 0
+			transform: translate3d(-60px, 100px, 0)
+	.top-right
+		img
+			opacity: 0
+			transform: translate3d(60px, -100px, 0)
+
+
+// *************
+
+
+// CARD BUILDER
+
+.builder
+	height: 100vh
+	.btn
+		z-index: 999
+	&_result
+		background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%)
+		height: 300px
+		margin: 0 auto
+		max-width: 600px
+		width: 100%
+	.group
+		font-size: 0
+		max-width: 600px
+		margin: 0 auto
+		padding: 0 15px
+		position: relative
+		label,
+		input
+			color: #fff
+			font-size: 1.5rem
+		input
+			appearance: none
+			background: none 
+			border: 1px solid #ffffff
+			box-sizing: border-box
+			padding-left: 1rem
+		.collapse_button
+			cursor: pointer
+			font-size: 2rem
+			right: 15px
+		&_image
+			position: relative
+			top: 0
+			&_button
+				color: #e5e5e5
+				cursor: pointer
+				font-size: 1.4rem
+				z-index: 999
+				&:hover
+					color: #000
+			img 
+				transition: .1s ease-in-out
+			&_coordinate
+				.form
+					.group
+						display: inline-block
+						padding: 0
+						width: 150px
+						input
+							border: 1px solid #e5e5e5 
+							border-radius: 5px
+							margin-left: 1rem
+							padding: 0
+							padding-left: 15px
+							width: 100px
+				label,
+				input
+					color: #000
+			&:hover
+				img
+					opacity: .8
+	&__user_upload
+		height: auto
+		&__images
+			height: 120px
+			overflow: hidden
+			position: relative
+			width: 190px
+			.close_button
+				cursor: pointer
+				&:hover
+					color: red
+			img
+				display: inline-block
+				height: auto
+				width: 100%
+// *************
+		
+// upload file
+.selectedImage_form
+	background: #fff
+.upload_image
+	height: 200px
+	overflow: hidden
+	width: 200px
+
+.vue_component__upload--image 
+	.upload_image_form__thumbnails
+		background: #fefefe
+		height: 300px
+		.upload_image_form__thumbnail
+			&[data-v-590170d4]
+				height: 100%
+				padding: 0
+				width: auto
+			img[data-v-590170d4]
+				height: 100%
+				left: 0
+				position: relative
+				top: 0
+				transform: translate3d(0, 0, 0)
+				width: auto
+
+
+// *************
