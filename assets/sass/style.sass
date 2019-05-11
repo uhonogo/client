@@ -62,6 +62,8 @@ h3
 
 
 // buttons
+.close_button
+	font-size: 1.3rem
 .btn
 	display: inline-block 
 	padding: 5px 15px
@@ -128,8 +130,7 @@ h3
 		width: 100%
 	.group
 		font-size: 0
-		max-width: 600px
-		margin: 0 auto
+		margin: 30px auto 0
 		padding: 0 15px
 		position: relative
 		label,
@@ -149,6 +150,11 @@ h3
 		&_image
 			position: relative
 			top: 0
+			.image_wrap
+				text-align: center
+				img 
+					max-width: 500px
+					width: 100%
 			&_button
 				color: #e5e5e5
 				cursor: pointer

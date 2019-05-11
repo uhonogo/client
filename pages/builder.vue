@@ -20,7 +20,7 @@
 				<image_mod
 						v-for="(image_add, imageId) in add_image__textToAdd"
 						:key="imageId"
-						:image_to_add="{ id: imageId, title: image_add.title, image_src: image_add.image_src }" />
+						:image_to_add="{ id: imageId, title: image_add.title, image_list }" />
 			</div>
 		</div>
 
@@ -65,15 +65,26 @@ export default {
       ],
       add_image__textToAdd: [
         {
-          title: "Company",
-          image_src: "/static/images/pattern.jpg"
+          title: "Company"
         },
         {
-          title: "Title",
-          image_src: "/static/images/fullwidthBlock.jpg"
+          title: "Title"
         }
       ]
-    };
+    }
+  },
+  computed: {
+	image_list() {
+	  return this.$store.getters.NAME
+	}
+  },
+  methods: {
+	add_new () {
+
+	}
+  },
+  mounted () {
+	this.image_list
   }
 }
 </script>

@@ -47,7 +47,7 @@ export const store = new Vuex.Store({
 	},
 	REMOVE_IMAGE__FROM_UPLOADS: (state, index) => {
 	  return state.uploads.splice(index, 1)
-	},
+	}
 
   }
 })

@@ -7,14 +7,20 @@
 		</div>
 		<div class="group_title" :class="{ 'border-bottom border-grey': !content }">
 			<h3 class="d-inline-block">{{ image_to_add.title }}</h3>
-			<div class="group_image_button d-inline-block ml-3">
+			<div class="group_image_button d-inline-block ml-3" @click="changeImage">
 				<i class="fas fa-exchange-alt"></i>
 			</div>
 		</div>
+
 		<transition name="opacity">
 			<div v-if="content" class="group_image">
-				<div class="image_wrap">
-					<img :src="image_to_add.image_src" alt="">
+				<v-layout v-if="Show_image_list" align-center justify-center row fill-height class="pt-5 pb-5">
+					<div v-for="(images, imageID) in image_to_add.image_list" :key="imageID" class="upload_image">
+						<img :src="images" @click="selectImage(images)" alt="">
+					</div>
+				</v-layout>
+				<div v-if="currentImage || Show_image_list" class="image_wrap">
+					<img :src="currentImage" alt="">
 				</div>
 				<div class="group_image_coordinate mt-3">
 					<form class="form">
@@ -44,8 +50,10 @@ export default {
   },
   data() {
     return {
-      content: false,
-      image__id: 0,
+	  content: false,
+	  Show_image_list: true,
+	  image__id: 0,
+	  currentImage: null,
       add_text__textToAdd: [
         {
           name: "X",
@@ -63,9 +71,11 @@ export default {
       var cur_id = this.image_to_add.id - this.image__id;
 
       if (cur_id == 0) {
-        return (this.content = true);
+		this.Show_image_list = true
+		return this.content = true
       } else {
-        return (this.content = false);
+		this.Show_image_list = false
+		return this.content = false
       }
     }
   },
@@ -73,7 +83,14 @@ export default {
     image_hide_show() {
       this.content = !this.content;
       this.image__id = 2;
-    }
+	},
+	selectImage(image) {
+	  this.currentImage = image
+	  this.Show_image_list = !this.Show_image_list
+	},
+	changeImage() {
+	  this.Show_image_list = !this.Show_image_list
+	}
   },
   created() {
     this.if_first;
