@@ -20,7 +20,8 @@ export const store = new Vuex.Store({
 	}
   },
   mutations: {
-	INITIALISE: (state) => {
+	INITIALISE (state) {
+	  
 	  state.name = JSON.parse(localStorage.getItem('image'))
 	},
 	UPDATE: (state, upload) => {
@@ -28,8 +29,11 @@ export const store = new Vuex.Store({
 	},
 	ADD_IMAGE: (state) => {
 	  var existing = JSON.parse(localStorage.getItem('image'))
+	  
 	  if (existing) {
-		existing.push( state.uploads )
+		for( var i = 0; i < state.uploads.length; i++ ) {
+		  existing.push( state.uploads[i] )
+	  	}
 		localStorage.setItem('image', JSON.stringify( existing ))
 	  } else {
 		localStorage.setItem('image', JSON.stringify( state.uploads ))
@@ -37,6 +41,13 @@ export const store = new Vuex.Store({
 	},
 	REMOVE_UPLOADS: (state) => {
 		state.uploads = []
-	}
+	},
+	REMOVE_IMAGE__FROM_NAME: (state, index) => {
+	  return state.name.splice(index, 1)
+	},
+	REMOVE_IMAGE__FROM_UPLOADS: (state, index) => {
+	  return state.uploads.splice(index, 1)
+	},
+
   }
 })

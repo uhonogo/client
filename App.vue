@@ -23,6 +23,9 @@ export default {
         crossorigin: 'anonymous'
       }
     ]
+  },
+  mounted () {
+	this.$store.commit('INITIALISE')
   }
 }
 </script>

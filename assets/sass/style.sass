@@ -114,42 +114,6 @@ h3
 	width: 150px
 // *************
 
-
-// animations
-
-.opacity-enter-active,
-.opacity-leave-active
-	transition: .2s ease-in-out
-
-.opacity-enter, 
-.opacity-leave-active
-	opacity: 0
-	.group_image
-		top: -30px
-
-.page-enter-active, .page-leave-active
-	transition: opacity .4s
-
-.page-enter, .page-leave-active
-	opacity: 0
-	height: 100vh
-	left: 0
-	position: absolute !important
-	top: 0
-	width: 100%
-	.bottom-left
-		img
-			opacity: 0
-			transform: translate3d(-60px, 100px, 0)
-	.top-right
-		img
-			opacity: 0
-			transform: translate3d(60px, -100px, 0)
-
-
-// *************
-
-
 // CARD BUILDER
 
 .builder
@@ -232,11 +196,23 @@ h3
 		
 // upload file
 .selectedImage_form
-	background: #fff
+	background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)
+	border-radius: 4px
+	box-shadow: 0 20px 30px rgba(#000, .5)
+	max-width: 760px
+	padding: 30px
+	position: fixed
+	width: 100%
+	z-index: 999
 .upload_image
+	border-radius: 4px
 	height: 200px
+	margin: 0 10px
 	overflow: hidden
+	position: relative
 	width: 200px
+	&:hover
+		box-shadow:  0 0 20px #c3c3c3
 
 .vue_component__upload--image 
 	.upload_image_form__thumbnails
@@ -254,6 +230,49 @@ h3
 				top: 0
 				transform: translate3d(0, 0, 0)
 				width: auto
+
+
+// *************
+
+// animations
+
+.fade_top-enter-active,
+.fade_top-leave-active
+	transition: .2s ease-in-out
+
+.fade_top-enter, 
+.fade_top-leave-active
+	opacity: 0
+	top: -30px
+
+.opacity-enter-active,
+.opacity-leave-active
+	transition: .2s ease-in-out
+
+.opacity-enter, 
+.opacity-leave-active
+	opacity: 0
+	.group_image
+		top: -30px
+
+.page-enter-active, .page-leave-active
+	transition: opacity .4s
+
+.page-enter, .page-leave-active
+	opacity: 0
+	height: 100vh
+	left: 0
+	position: absolute !important
+	top: 0
+	width: 100%
+	.bottom-left
+		img
+			opacity: 0
+			transform: translate3d(-60px, 100px, 0)
+	.top-right
+		img
+			opacity: 0
+			transform: translate3d(60px, -100px, 0)
 
 
 // *************
