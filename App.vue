@@ -25,7 +25,7 @@ export default {
     ]
   },
   mounted () {
-	this.$store.commit('INITIALISE')
+	this.$store.dispatch('INITIALISE')
   }
 }
 </script>

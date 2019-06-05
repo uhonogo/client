@@ -26,6 +26,6 @@ new Vue({
 	el: '#app',
 	router,
 	store,
-	components: { App },
-	template: '<App/>'
-})
+	colors,
+	render: h => h(App)
+}).$mount('#app')

@@ -14,21 +14,18 @@
 
 		<transition name="opacity">
 			<div v-if="content" class="group_image">
-				<v-layout v-if="Show_image_list" align-center justify-center row fill-height class="pt-5 pb-5">
-					<div v-for="(images, imageID) in image_to_add.image_list" :key="imageID" class="upload_image">
-						<img :src="images" @click="selectImage(images)" alt="">
-					</div>
+				<v-layout align-center justify-center row fill-height class="pt-5">
+					<v-flex xs v-if="currentImage" class="image_wrap" :class="{ blured: !Show_image_list }">
+						<img :src="currentImage" alt="">
+					</v-flex>
 				</v-layout>
-				<div v-if="currentImage || Show_image_list" class="image_wrap">
-					<img :src="currentImage" alt="">
-				</div>
-				<div class="group_image_coordinate mt-3">
-					<form class="form">
-						<add_text 
-							v-for="(text_add, textId) in add_text__textToAdd"
-							:key="textId"
-							:text_to_add="{ name: text_add.name, default: text_add.default }" />
-					</form>
+				<div v-if="!Show_image_list && content" class="group_image_list position-XY-center">
+					<div class="close_button position-top-right" @click="changeImage">
+						<i class="far fa-times-circle"></i>
+					</div>
+					<div v-for="(image, imageID) in image_to_add.image_list" :key="imageID" class="image">
+						<img :src="image" @click="selectImage(image), cardLogoSelect(image, image_to_add.title)" alt="">
+					</div>
 				</div>
 			</div>
 		</transition>
@@ -53,7 +50,7 @@ export default {
 	  content: false,
 	  Show_image_list: true,
 	  image__id: 0,
-	  currentImage: null,
+	//   currentImage: null,
       add_text__textToAdd: [
         {
           name: "X",
@@ -71,13 +68,21 @@ export default {
       var cur_id = this.image_to_add.id - this.image__id;
 
       if (cur_id == 0) {
-		this.Show_image_list = true
+		this.Show_image_list = !this.Show_image_list
 		return this.content = true
       } else {
 		this.Show_image_list = false
 		return this.content = false
       }
-    }
+	},
+	currentImage () {
+	  var title = this.image_to_add.title
+	  if (title == "background") {
+		return this.$store.getters.CARD_BG
+	  } else if (title == "logo") {
+		return this.$store.getters.CARD_LOGO
+	  }
+	}
   },
   methods: {
     image_hide_show() {
@@ -90,10 +95,18 @@ export default {
 	},
 	changeImage() {
 	  this.Show_image_list = !this.Show_image_list
-	}
+	},
+	cardLogoSelect ( image, dir_name ) {
+		if ( dir_name.toLowerCase() == 'logo' ) {
+			this.$store.dispatch('SELECT_CARD_LOGO', image)
+		} else {
+			this.$store.dispatch('SELECT_CARD_BG', image)
+		}
+	},
   },
   created() {
-    this.if_first;
-  }
+	this.if_first
+  },
+
 };
 </script>

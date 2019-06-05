@@ -127,10 +127,19 @@ h3
 		height: 300px
 		margin: 0 auto
 		max-width: 600px
+		overflow: hidden
+		position: relative
 		width: 100%
+		.card_logo
+			display: block
+			left: 0
+			position: absolute
+			top: 0
+			z-index: 999
 	.group
 		font-size: 0
 		margin: 30px auto 0
+		max-width: 600px
 		padding: 0 15px
 		position: relative
 		label,
@@ -147,13 +156,36 @@ h3
 			cursor: pointer
 			font-size: 2rem
 			right: 15px
+		&_title
+			&>*
+				vertical-align: middle
 		&_image
+			min-height: 250px
 			position: relative
 			top: 0
 			.image_wrap
 				text-align: center
+				&.blured
+					img
+						filter: blur(2px)
+						opacity: .7
 				img 
 					max-width: 500px
+					width: 100%
+			&_list
+				text-align: center
+				.image
+					border-radius: 50%
+					cursor: pointer
+					display: inline-block
+					height: auto
+					margin: 0 5px
+					max-width: 90px
+					overflow: hidden
+					transition: .2s ease-in-out
+					vertical-align: top
+				img
+					height: 90px
 					width: 100%
 			&_button
 				color: #e5e5e5
@@ -164,25 +196,7 @@ h3
 					color: #000
 			img 
 				transition: .1s ease-in-out
-			&_coordinate
-				.form
-					.group
-						display: inline-block
-						padding: 0
-						width: 150px
-						input
-							border: 1px solid #e5e5e5 
-							border-radius: 5px
-							margin-left: 1rem
-							padding: 0
-							padding-left: 15px
-							width: 100px
-				label,
-				input
-					color: #000
-			&:hover
-				img
-					opacity: .8
+
 	&__user_upload
 		height: auto
 		&__images
